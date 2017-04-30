@@ -1,16 +1,27 @@
+var FIRE_RGB = {r: 255, g: 255, b: 0};
+var TREE_RGB = {r: 0, g: 255, b: 0};
+
 var game;
 var buffer;
-var rainfallNumber = 0;       
+var rainfallNumber = 0;
+var forest_grid = [];
+var forest_wildfire;
 
 window.addEventListener('resize', function () {  game.scale.refresh();});
 
 function preload () {
-    game.load.image('initial', 'images/initial.jpg');
+    buffer = game.add.bitmapData(game.width, game.height);
+    for (var i = 0; i < game.width; i++) {
+        forest_grid.push([]);
+        for (var j = 0; j < game.height; j++) {
+            forest_grid[i].push(TREE);
+            buffer.setPixel(i, j, TREE_RGB.r, TREE_RGB.g, TREE_RGB.b, 255, true);
+        }
+    }
+    forest_wildfire = new ForestWildfire(forest_grid);
 }
 
 function create(){
-    buffer = game.add.bitmapData(game.width, game.height);
-    buffer.copy('initial');
     buffer.addToWorld();
 }
 
@@ -19,17 +30,16 @@ function render(){
 }
 
 function applyChanges(){
-    //rather than generating dummy changes, we will call the simulation
-    var changes = generateDummyRainfallChanges();
+    var changes = forest_wildfire.update_fire_spread([{x: 50, y: 50}], 0, 0, 0);
 
-    for(i = 0; i < changes.length; i ++){
+    for (i = 0; i < changes.length; i++){
         var change = changes[i];
         var delta = {
-            x: change[0],
-            y: change[1],
-            r: change[2],
-            g: change[3],
-            b: change[4]
+            x: change.x,
+            y: change.y,
+            r: FIRE_RGB.r,
+            g: FIRE_RGB.g,
+            b: FIRE_RGB.b
         }
         
         buffer.setPixel(delta.x, delta.y, delta.r, delta.g, delta.b, 255, true);
@@ -55,7 +65,9 @@ function getRandomInt(min, max) {
 }
 
 window.onload = function() {
-    game = new Phaser.Game("100", "100", Phaser.AUTO, 'phaser-div', { create: create, preload: preload, render: render});
+    game = new Phaser.Game(200, 200, Phaser.AUTO, 'phaser-div', { create: create, preload: preload, render: render});
+    //game.time.desiredFps = 1;
+    //game.time.slowMotion = 5.0;
 };
 
 
