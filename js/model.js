@@ -16,7 +16,7 @@ ForestWildfire.prototype.update_fire_spread = function(new_fire_centers, wind_sp
             var new_state = this.update_fire_state(i, j, wind_speed, wind_dir, humidity);
 
             if (old_state != new_state) {
-                changes.push({x: i, y: j});
+                changes.push({x: i, y: j, state: new_state});
                 new_forest_grid[i][j] = new_state;
             }
         }
@@ -24,7 +24,7 @@ ForestWildfire.prototype.update_fire_spread = function(new_fire_centers, wind_sp
 
     for (var i = 0; i < new_fire_centers.length; i++) {
         var fire_center = new_fire_centers[i];
-        changes.push({x: fire_center.x, y: fire_center.y});
+        changes.push({x: fire_center.x, y: fire_center.y, state: FIRE});
         new_forest_grid[fire_center.x][fire_center.y] = FIRE;
     }
 
@@ -34,7 +34,7 @@ ForestWildfire.prototype.update_fire_spread = function(new_fire_centers, wind_sp
 }
 
 ForestWildfire.prototype.update_fire_state = function(i, j, wind_speed, wind_dir, humidity) {
-    if (this.forest_grid[i][j] == TREE) {
+    if (is_tree(this.forest_grid[i][j])) {
         if (i > 0 && this.forest_grid[i-1][j] == FIRE
             || j > 0 && this.forest_grid[i][j-1] == FIRE
             || i < this.x_max-1 && this.forest_grid[i+1][j] == FIRE

@@ -1,5 +1,10 @@
-var FIRE_RGB = {r: 255, g: 255, b: 0};
-var TREE_RGB = {r: 0, g: 255, b: 0};
+var map_color_codes = {}
+map_color_codes[GROUND] = {r: 125, g: 68, b: 29}
+map_color_codes[WATER] = {r: 64, g: 164, b: 223}
+map_color_codes[FIRE] = {r: 226, g: 88, b: 34}
+map_color_codes[SPARSE_TREE] = {r: 124, g: 252, b: 0}
+map_color_codes[TREE] = {r: 0, g: 150, b: 0}
+map_color_codes[DENSE_TREE] = {r: 0, g: 75, b: 0}
 
 var game;
 var buffer;
@@ -9,13 +14,23 @@ var forest_wildfire;
 
 window.addEventListener('resize', function () {  game.scale.refresh();});
 
+function get_random_pixel() {
+    var rnd = Math.random();
+    if (rnd < 0.125) return GROUND;
+    if (rnd < 0.250) return WATER;
+    if (rnd < 0.500) return SPARSE_TREE;
+    if (rnd < 0.750) return DENSE_TREE;
+    return TREE;
+}
+
 function preload () {
     buffer = game.add.bitmapData(game.width, game.height);
     for (var i = 0; i < game.width; i++) {
         forest_grid.push([]);
         for (var j = 0; j < game.height; j++) {
-            forest_grid[i].push(TREE);
-            buffer.setPixel(i, j, TREE_RGB.r, TREE_RGB.g, TREE_RGB.b, 255, true);
+            var pixel = get_random_pixel();
+            forest_grid[i].push(pixel);
+            buffer.setPixel(i, j, map_color_codes[pixel].r, map_color_codes[pixel].g, map_color_codes[pixel].b, 255, true);
         }
     }
     forest_wildfire = new ForestWildfire(forest_grid);
@@ -37,9 +52,9 @@ function applyChanges(){
         var delta = {
             x: change.x,
             y: change.y,
-            r: FIRE_RGB.r,
-            g: FIRE_RGB.g,
-            b: FIRE_RGB.b
+            r: map_color_codes[change.state].r,
+            g: map_color_codes[change.state].g,
+            b: map_color_codes[change.state].b
         }
         
         buffer.setPixel(delta.x, delta.y, delta.r, delta.g, delta.b, 255, true);
