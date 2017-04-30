@@ -4,7 +4,7 @@ function ForestWildfire(init_grid) {
     this.y_max = init_grid[0].length;
 }
 
-ForestWildfire.prototype.update_fire_spread = function(new_fire_centers, wind_speed, wind_dir, humidity) {
+ForestWildfire.prototype.update_fire_spread = function(new_fire_centers, wind_speed, wind_angle, humidity) {
     var changes = [];
     var new_forest_grid = this.forest_grid.map(function(arr) {
         return arr.slice();
@@ -13,7 +13,7 @@ ForestWildfire.prototype.update_fire_spread = function(new_fire_centers, wind_sp
     for (var i = 0; i < this.x_max; i++) {
         for (var j = 0; j < this.y_max; j++) {
             var old_state = this.forest_grid[i][j];
-            var new_state = this.update_fire_state(i, j, wind_speed, wind_dir, humidity);
+            var new_state = this.update_fire_state(i, j, wind_speed, wind_angle, humidity);
 
             if (old_state != new_state) {
                 changes.push({x: i, y: j, state: new_state});
@@ -33,13 +33,10 @@ ForestWildfire.prototype.update_fire_spread = function(new_fire_centers, wind_sp
     return changes;
 }
 
-ForestWildfire.prototype.update_fire_state = function(i, j, wind_speed, wind_dir, humidity) {
+ForestWildfire.prototype.update_fire_state = function(i, j, wind_speed, wind_angle, humidity) {
     if (is_tree(this.forest_grid[i][j])) {
-        if (i > 0 && this.forest_grid[i-1][j] == FIRE
-            || j > 0 && this.forest_grid[i][j-1] == FIRE
-            || i < this.x_max-1 && this.forest_grid[i+1][j] == FIRE
-            || j < this.y_max-1 && this.forest_grid[i][j+1] == FIRE) {
-            
+        var neighbors_on_fire = this.get_neighbors_on_fire(i, j);
+        if (neighbors_on_fire.length != 0) {
             var rnd = Math.random();
             if (rnd <= 0.70) {
                 return FIRE;
@@ -49,6 +46,30 @@ ForestWildfire.prototype.update_fire_state = function(i, j, wind_speed, wind_dir
 
     return this.forest_grid[i][j];
 }
+
+ForestWildfire.prototype.get_neighbors_on_fire = function(i, j) {
+    var neighbors_on_fire = [];
+
+    if (i > 0 && this.forest_grid[i-1][j] == FIRE) {
+        neighbors_on_fire.push({x: i-1, y: j});
+    }
+    if (j > 0 && this.forest_grid[i][j-1] == FIRE) {
+        neighbors_on_fire.push({x: i, y: j-1});
+    }
+    if (i < this.x_max-1 && this.forest_grid[i+1][j] == FIRE) {
+        neighbors_on_fire.push({x: i+1, y: j});
+    }
+    if (j < this.y_max-1 && this.forest_grid[i][j+1] == FIRE) {
+        neighbors_on_fire.push({x: i, y: j+1});
+    }
+
+    return neighbors_on_fire;
+}
+
+ForestWildfire.prototype.estimate_fire_probability = function(i, j, neighbors_on_fire, wind_speed, wind_angle, humidity) {
+    
+}
+
 
 /*
  * Calculates fire spread rate
