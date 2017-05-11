@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A9BC3D1D-9C88-4299-8CF2-2BFF7CE57BFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kinesense.Interfaces</RootNamespace>
+    <AssemblyName>Kinesense.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Kinesense.Interfaces.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+    <DocumentationFile>..\Doc\Debug\Kinesense.Interfaces.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bitmaps\BitmapConverter.cs" />
+    <Compile Include="Bitmaps\BitmapVideoFrame.cs" />
+    <Compile Include="Bitmaps\DatabaseFramePacketWrapper.cs" />
+    <Compile Include="Bitmaps\FrameHashObject.cs" />
+    <Compile Include="Bitmaps\FramePacketIndex.cs" />
+    <Compile Include="Bitmaps\H264EncoderFactory.cs" />
+    <Compile Include="Bitmaps\IVideoFrame.cs" />
+    <Compile Include="Bitmaps\NewBitmapEventArgs.cs" />
+    <Compile Include="Bitmaps\NewSystemDrawingBitmapEventArgs.cs" />
+    <Compile Include="Bitmaps\TimedByteArrayBitmap.cs" />
+    <Compile Include="Clarification\ClarificationBase.cs" />
+    <Compile Include="Clarification\ClarificationCategories.cs" />
+    <Compile Include="Clarification\ClarificationObjects.cs" />
+    <Compile Include="Clarification\ClarificationSetting.cs" />
+    <Compile Include="Clarification\ClarificationUIBase.cs" />
+    <Compile Include="Clarification\IClarification.cs" />
+    <Compile Include="Clarification\NewClarifiedImageForReport.cs" />
+    <Compile Include="EventArguments\FileDataAvailableEventArgs.cs" />
+    <Compile Include="Interfaces\IVideoRecorder.cs" />
+    <Compile Include="Serializers\SerializableDictionary.cs" />
+    <Compile Include="Threading\GlobalThreadQuitter.cs" />
+    <Compile Include="Enum\DisclosureCategory.cs" />
+    <Compile Include="Enum\DisclosureLogTypes.cs" />
+    <Compile Include="Enum\EncodingOptions.cs" />
+    <Compile Include="Enum\MetadataAction.cs" />
+    <Compile Include="EventArguments\ReportMarkerListChangeEventArgs.cs" />
+    <Compile Include="EventArguments\ShowDBConnectionStatusEventArgs.cs" />
+    <Compile Include="EventArguments\VideoDecoderCompleteEventArgs.cs" />
+    <Compile Include="Enum\DefaultAnalysisResolutionMode.cs" />
+    <Compile Include="Enum\EnumLocalizer.cs" />
+    <Compile Include="Enum\LocalisedEnum.cs" />
+    <Compile Include="Enum\MediaTypes.cs" />
+    <Compile Include="Enum\PreviewSpeeds.cs" />
+    <Compile Include="Enum\SuggestedAnalysisResolutionMode_Details.cs" />
+    <Compile Include="EventArguments\IsLockedValueChangedEventArgs.cs" />
+    <Compile Include="Interfaces\IMultiChannelMediaFileMetadataWrapper.cs" />
+    <Compile Include="Logging\ProblemStepRecorder.cs" />
+    <Compile Include="Logging\SessionLogGlobal.cs" />
+    <Compile Include="Logging\WarningReason.cs" />
+    <Compile Include="Misc\ActionCommand.cs" />
+    <Compile Include="Misc\AnalyzeOptions.cs" />
+    <Compile Include="Misc\AnalyzeScenario.cs" />
+    <Compile Include="Bitmaps\BitmapHistogram.cs" />
+    <Compile Include="Bitmaps\BufferManager.cs" />
+    <Compile Include="Bitmaps\BufferManagerManager.cs" />
+    <Compile Include="Bitmaps\ByteArrayBitmap.cs" />
+    <Compile Include="Bitmaps\ByteArrayBitmap_Tools.cs" />
+    <Compile Include="Threading\ConcurrentList.cs" />
+    <Compile Include="Threading\ConcurrentStringList.cs" />
+    <Compile Include="Threading\JobTicketingSystem.cs" />
+    <Compile Include="Threading\ThreadSleepMonitor.cs" />
+    <Compile Include="Threading\ThrottledQueue.cs" />
+    <Compile Include="Tools\ByteArrayUtils.cs" />
+    <Compile Include="Bitmaps\CompressedByteArrayBitmap.cs" />
+    <Compile Include="Misc\DateTimeConverters.cs" />
+    <Compile Include="Bitmaps\FrameRateCounter.cs" />
+    <Compile Include="Misc\TagsReportOutputObject.cs" />
+    <Compile Include="Threading\NamedAction.cs" />
+    <Compile Include="Enum\PlayBufferTightness.cs" />
+    <Compile Include="Enum\ShrinkGrowRequests.cs" />
+    <Compile Include="Enum\VideoAspectRatioOptions.cs" />
+    <Compile Include="Enum\VideoExportType.cs" />
+    <Compile Include="Enum\VideoSourceStates.cs" />
+    <Compile Include="Errors\UnfinishedAudioException.cs" />
+    <Compile Include="EventArguments\BasicPercentCompleteEventArgs.cs" />
+    <Compile Include="EventArguments\ProgressTimeEvents.cs" />
+    <Compile Include="Enum\ReportObjectVariant.cs" />
+    <Compile Include="EventArguments\ShrinkGrowEventArgs.cs" />
+    <Compile Include="EventArguments\SiraViewLoadingEventArgs.cs" />
+    <Compile Include="Interfaces\IMetadataReader.cs" />
+    <Compile Include="Bitmaps\PollyRecoveredFrame.cs" />
+    <Compile Include="Logging\DebugMessageLogger.cs" />
+    <Compile Include="Tools\ScreenAndPowerSaverInhibiter.cs" />
+    <Compile Include="Misc\SubRegionDefinition.cs" />
+    <Compile Include="Enum\DeinterlaceMode.cs" />
+    <Compile Include="Bitmaps\EncodedFrame.cs" />
+    <Compile Include="Misc\ForensicSpotlightShape.cs" />
+    <Compile Include="Misc\GlobalUserInfo.cs" />
+    <Compile Include="Bitmaps\HLSImage.cs" />
+    <Compile Include="Misc\Interval.cs" />
+    <Compile Include="Bitmaps\JpegBitmapEncoderFactory.cs" />
+    <Compile Include="Bitmaps\JpegDataToBitmapSourceConverter.cs" />
+    <Compile Include="Misc\Languages.cs" />
+    <Compile Include="Misc\ListPairs.cs" />
+    <Compile Include="Misc\LogPreLoader.cs" />
+    <Compile Include="Tools\MathsExtra.cs" />
+    <Compile Include="Misc\ObservableObject.cs" />
+    <Compile Include="Misc\Polygon.cs" />
+    <Compile Include="Bitmaps\RecoveredFrame.cs" />
+    <Compile Include="Misc\RelativeRegion.cs" />
+    <Compile Include="Misc\RelayCommand.cs" />
+    <Compile Include="Tools\RunningAverage.cs" />
+    <Compile Include="Logging\SessionLog.cs" />
+    <Compile Include="Logging\SessionObject.cs" />
+    <Compile Include="Tools\StringTools.cs" />
+    <Compile Include="Misc\TrulyObservableCollection.cs" />
+    <Compile Include="Tools\Z7Wrapper.cs" />
+    <Compile Include="Enum\BaseColours.cs" />
+    <Compile Include="Enum\ClassicalBroadcastFormat.cs" />
+    <Compile Include="Enum\ColorSelect.cs" />
+    <Compile Include="Enum\ImportPluginTypes.cs" />
+    <Compile Include="Enum\OrdinalDirection.cs" />
+    <Compile Include="Enum\SARModes.cs" />
+    <Compile Include="Enum\SessionTypes.cs" />
+    <Compile Include="Enum\SpriteTypeSelect.cs" />
+    <Compile Include="Enum\StretchMode.cs" />
+    <Compile Include="Enum\TimelineCommand.cs" />
+    <Compile Include="Errors\KinesenseOperationFailed.cs" />
+    <Compile Include="Errors\LostCameraStreamException.cs" />
+    <Compile Include="EventArguments\BasicTimeEventArgs.cs" />
+    <Compile Include="EventArguments\DeinterlaceModeEventArgs.cs" />
+    <Compile Include="EventArguments\FileSelectedEventArgs.cs" />
+    <Compile Include="EventArguments\FilterChangedEventArgs.cs" />
+    <Compile Include="EventArguments\ImageForReportEventArgs.cs" />
+    <Compile Include="EventArguments\SessionLogEvent.cs" />
+    <Compile Include="EventArguments\SingleImageEventArgs.cs" />
+    <Compile Include="EventArguments\StatusUpdateEventArgs.cs" />
+    <Compile Include="EventArguments\VideoChangedEventArgs.cs" />
+    <Compile Include="Interfaces\ICloseRequester.cs" />
+    <Compile Include="Interfaces\IHashAlgorithmFactory.cs" />
+    <Compile Include="Interfaces\IImageForensics.cs" />
+    <Compile Include="Interfaces\IKinesenseHost.cs" />
+    <Compile Include="Interfaces\IOverloadable.cs" />
+    <Compile Include="Logging\ISessionLogger.cs" />
+    <Compile Include="Interfaces\ISimpleSpriteDataRecovery.cs" />
+    <Compile Include="Interfaces\IRecordedVideo.cs" />
+    <Compile Include="Interfaces\IReportingFormatOptions.cs" />
+    <Compile Include="Interfaces\IReportingPlugin.cs" />
+    <Compile Include="Interfaces\IVideoExporter.cs" />
+    <Compile Include="Interfaces\IVideoPlayer.cs" />
+    <Compile Include="Interfaces\IVideoSourceEditor.cs" />
+    <Compile Include="Interfaces\IVideoDecoder.cs" />
+    <Compile Include="Interfaces\IVideoEncoder.cs" />
+    <Compile Include="Interfaces\IVideoReader.cs" />
+    <Compile Include="Interfaces\IVideoWriter.cs" />
+    <Compile Include="Misc\PreciseDateTime.cs" />
+    <Compile Include="Logging\DebugMessageLogger_Extra.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Misc\Scheme.cs" />
+    <Compile Include="Bitmaps\VideoFrame.cs" />
+    <Compile Include="Serializers\SerializeImage.cs" />
+    <Compile Include="Useful\Averaging.cs" />
+    <Compile Include="Useful\BitmapConverters.cs" />
+    <Compile Include="Useful\ColourSpaceConverters.cs" />
+    <Compile Include="Useful\DataConverters.cs" />
+    <Compile Include="Useful\DataConverters_NonStatic.cs" />
+    <Compile Include="Useful\FrameRateNormaliser.cs" />
+    <Compile Include="Useful\GetWindowsErrorCodeText.cs" />
+    <Compile Include="Useful\ImageFilters.cs" />
+    <Compile Include="Useful\IPTools.cs" />
+    <Compile Include="Useful\KinesenseInternationalTimeStringFormat.cs" />
+    <Compile Include="Useful\LogOddObject.cs" />
+    <Compile Include="Useful\NamedBackgroundWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Useful\NetworkTime.cs" />
+    <Compile Include="Useful\OvationUseful.cs" />
+    <Compile Include="Useful\PutImagesSideBySide.cs" />
+    <Compile Include="Threading\SafeActionHelper.cs" />
+    <Compile Include="Threading\ThreadedTextFileWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Kinesense.Interfaces.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

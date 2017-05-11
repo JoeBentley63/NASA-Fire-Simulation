@@ -1,0 +1,43 @@
+﻿<Window x:Class="NASAApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NASAApp"
+        mc:Ignorable="d"
+        Title="NASA Apps Challenge - Maps-to-data tool" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Button Content="Open"
+                Click="OpenButton_Click"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="BGR Value:"/>
+                <TextBox x:Name="_BGRTextBox" Text="0,0,0"/>
+                <Button Content="Threshold!"
+                        Click="_ThresholdButton_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Select Channel"/>
+                <CheckBox Content="R" x:Name="_RChannel" Margin="10,0,0,0"/>
+                <CheckBox Content="G" x:Name="_GChannel" Margin="10,0,0,0"/>
+                <CheckBox Content="B" x:Name="_BChannel" Margin="10,0,0,0"/>
+                <Button Content="Map Channel"
+                        Click="_MapChannelButton_Click"/>
+                <Button Content="Map Hue"
+                        Click="_MapHueButton_Click"
+                        Margin="5,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <Image x:Name="_image"
+               Grid.Row="1"/>
+        <Button Click="_SaveCSVButton_Click"
+                Grid.Row="2"
+                Content="Save CSV File"/>
+    </Grid>
+</Window>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NASAApp", "NASAApp\NASAApp.csproj", "{F1596AF5-56B8-4A45-BAA4-35163E2FE2E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireApp", "FireApp\FireApp.csproj", "{D51BC692-92AA-49F5-A567-4CA55B7D9A8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinesense.Interfaces", "Kinesense.Interfaces\Kinesense.Interfaces.csproj", "{A9BC3D1D-9C88-4299-8CF2-2BFF7CE57BFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1596AF5-56B8-4A45-BAA4-35163E2FE2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1596AF5-56B8-4A45-BAA4-35163E2FE2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1596AF5-56B8-4A45-BAA4-35163E2FE2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1596AF5-56B8-4A45-BAA4-35163E2FE2E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D51BC692-92AA-49F5-A567-4CA55B7D9A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D51BC692-92AA-49F5-A567-4CA55B7D9A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D51BC692-92AA-49F5-A567-4CA55B7D9A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D51BC692-92AA-49F5-A567-4CA55B7D9A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9BC3D1D-9C88-4299-8CF2-2BFF7CE57BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9BC3D1D-9C88-4299-8CF2-2BFF7CE57BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9BC3D1D-9C88-4299-8CF2-2BFF7CE57BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9BC3D1D-9C88-4299-8CF2-2BFF7CE57BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

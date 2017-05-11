@@ -1,0 +1,1502 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kinesense.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="M:Kinesense.Interfaces.Bitmaps.DatabaseFramePacketWrapper.#ctor(System.Byte[])">
+            <summary>
+            pass in the full byte content of a Frame packet from the database.
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Bitmaps.DatabaseFramePacketWrapper.#ctor">
+            <summary>
+            new object for building a FramePacket
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Bitmaps.DatabaseFramePacketWrapper.MakeBuffer(System.Boolean)">
+            <summary>
+            Like ConvertJpegDataToMJpegByteArray but with an index at the end
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Kinesense.Interfaces.Clarification.ClarificationBase.RequestFrameDelegate">
+            <summary>
+            if time is null, get current or most recently accessed time
+            </summary>
+            <param name="VideoSourceID"></param>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.Name">
+            <summary>
+            Publicly readable name for the Clarification
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.OperationName">
+            <summary>
+            A name for the operation formed. This must be consistent over different versions
+            and unique to this operation. i.e. BrightnessChange would be an operation and could
+            be this value. The "Name" files can be language specific, this can't.
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.Description">
+            <summary>
+            A short description of what the clarification does
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.MajorCategory">
+            <summary>
+            If we were to be organising the clarification by group, what is its major heading
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.MinorCategory">
+            <summary>
+            If we were to be organising the clarification by group, what is its minor heading
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.SourceImage">
+            <summary>
+            The image to apply the enhancement too
+            Runs NewSourceImageSet when set
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.ResultImage">
+            <summary>
+            The result image of the enhancement
+            Fires NewResultImageSet when set
+            </summary>
+        </member>
+        <member name="E:Kinesense.Interfaces.Clarification.IClarification.NewResultImageSet">
+            <summary>
+            Event to be fired when a new Result image is ready
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.EnhancementUIElement">
+            <summary>
+            UI element available for altering the settings of the Clarification
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.HasHadChanges">
+            <summary>
+            to be polled when changing to ensure changes are not left behind without being applied
+            Only needs to be used if the UI has an "Apply Changes" button or similar
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Clarification.IClarification.ApplyChanges">
+            <summary>
+            If there have been changes that have not been applied, this allows the calling interface to force their application
+            Only needs to have function for those plug-ins with apply buttons of course.
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.HasEncouteredError">
+            <summary>
+            For Errors in the UI version only, the non-UI version should just return a Null.
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.ChangesImageDimensions">
+            <summary>
+            A flag indicating if the Clarification may change the dimensions of the source image
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.Settings">
+            <summary>
+            Settings for the clarification
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Clarification.IClarification.SettingHumanReadable">
+            <summary>
+            Human readable settings for the log
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Clarification.IClarification.Process(Kinesense.Interfaces.ByteArrayBitmap,Kinesense.Interfaces.Clarification.ClarificationSettings,System.String@)">
+            <summary>
+            A route for the clarification to be called without requiring a UI
+            </summary>
+            <param name="source">Source Image</param>
+            <param name="settings">Settings for clarification</param>
+            <param name="settingsHumanReadable">Human readable interpretation of the clarification++</param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Logging.DebugMessageLogger_Extra.StartNewExtraLog(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="subName"></param>
+            <param name="reason"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Logging.DebugMessageLogger_Extra.EndExtraLog(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="number"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Logging.DebugMessageLogger_Extra.EndAllRemainingLogs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.Classes.AnalyzeOptions.RelativeRegion">
+            <summary>
+            This is used for when we only want to analyses a smaller areas of the image field, or have
+            passed a cropped area and need to tell the algorithm to adjust its positions accordingly
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Classes.ByteArrayBitmap_Tools.ImageDataOrderTo2D(System.Boolean[],System.Int32,System.Int32)">
+            <summary>
+            Converts data that is in ImageOrder (1D array, row major) into c# standard 2D data
+            </summary>
+            <param name="source">Source Data in ImageOrder</param>
+            <param name="width">Target width</param>
+            <param name="height">Target Height</param>
+            <returns>Result 2D array</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Classes.ByteArrayBitmap_Tools.ImageDataOrderTo2D(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts data that is in ImageOrder (1D array, row major) into c# standard 2D data
+            </summary>
+            <param name="source">Source Data in ImageOrder</param>
+            <param name="width">Target width</param>
+            <param name="height">Target Height</param>
+            <returns>Result 2D array</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Classes.ByteArrayBitmap_Tools.Convert2DToImageDataOrder(System.Byte[0:,0:])">
+            <summary>
+            Converts data that is in ImageOrder (1D array, row major) into c# standard 2D data
+            </summary>
+            <param name="source">Source Data in ImageOrder</param>
+            <param name="width">Target width</param>
+            <param name="height">Target Height</param>
+            <returns>Result 2D array</returns>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.docHeaderTextAndEmph">
+            <summary>
+            Document header data, if empty no space is reserved
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.FooterText">
+            <summary>
+            Text to be written at given position
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.FooterTextPosition">
+            <summary>
+            Left, Centre, Right
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.ShowPageNumbers">
+            <summary>
+            On / off
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.docMargins">
+            <summary>
+            Document margins in mm
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.TableHeaders">
+            <summary>
+            Headers
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.TableData">
+            <summary>
+            Data
+            Not all fields need to be filled for each row.
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.Classes.TagsReportOutputObject.ImageWidth">
+            <summary>
+            The Image width for image entries into the table
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Classes.HLSImage.RGBToHLS(System.Double,System.Double,System.Double,System.Byte@,System.Byte@,System.Byte@)">
+            <summary>
+            
+            </summary>
+            <param name="RGB"></param>
+            <returns>byte[]{H (0-255), L (0-255), S (0-255)}</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Classes.HLSImage.RGBToHLS(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="RGB"></param>
+            <returns>byte[]{H (0-255), L (0-255), S (0-255)}</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.Blur(Kinesense.Interfaces.ByteArrayBitmap)">
+            <summary>
+            Dear Dr Dan. Please pointer-ize me.
+            </summary>
+            <param name="toBlur"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.Deinterlace">
+            <summary>
+            replaces every second row of pixels with the previous row
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.Deinterlace(Kinesense.Interfaces.Enum.DeinterlaceMode)">
+            <summary>
+            replaces every second row of pixels with the previous row
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetBiLinearResize(System.Int32,System.Int32)">
+            <summary>
+            test code. Doesn't work very well
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetResized(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            fastest code in the west
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetResized(System.Int32,System.Int32)">
+            <summary>
+            fastest code in the west
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream(System.Int32,System.Int32)">
+            <summary>
+            An attempt at replicating the above code using pointer arathamtic
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_V1(System.Int32,System.Int32)">
+            <summary>
+            An attempt at replicating the above code using pointer arithmetic
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_NoTransparancyCalc_V1(System.Int32,System.Int32)">
+            <summary>
+            An attempt at replicating the above code using pointer arithmetic
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_NoTransparancyCalc_V2(System.Int32,System.Int32)">
+            <summary>
+            An attempt at replicating the above code using pointer arithmetic
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_NoTransparancyCalc_V3(System.Int32,System.Int32)">
+            <summary>
+            An attempt at replicating the above code using pointer arithmetic
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_NoTransparancyCalc_V3_WithGrayscale(System.Int32,System.Int32)">
+            <summary>
+            Gets the sub-sampled byte stream
+            AND produces a grayscale version of the data
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_NoTransparancyCalc_V3_WithGrayscale_Experimental(System.Int32,System.Int32)">
+            <summary>
+            Gets the sub-sampled byte stream
+            AND produces a grayscale version of the data
+            AND produces YUV version of the data
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_NoTransparancyCalc_V3_WithGrayscale_HLS(System.Int32,System.Int32)">
+            <summary>
+            Gets the sub-sampled byte stream
+            AND produces a grayscale version of the data
+            AND produces HLS version of the data
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetSubSampledBytestream_Bilinear_NoTransparancyCalc_V3_WithMax_retBytemap(System.Int32,System.Int32)">
+            <summary>
+            An attempt at replicating the above code using pointer arathamtic
+            </summary>
+            <param name="newWidth"></param>
+            <param name="newHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.FromGrayScaleData(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Slow
+            </summary>
+            <param name="data"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.FromBooleanData(System.Boolean[],System.Int32,System.Int32)">
+            <summary>
+            Slow
+            </summary>
+            <param name="data"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.FromIntMaskData(System.Int32[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Slow
+            </summary>
+            <param name="data"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetGrayScale_4bpp">
+            <summary>
+            Gets a grayscale byt version assuming the image is 4 bpp
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetHorizCData_4BytesPerPixel">
+            <summary>
+            Recovers the data from the origional image, and returns the HorizC data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.GetHorizCData_4BytesPerPixel_AltGrayScale">
+            <summary>
+            Returns the data using the DataGrayscale datasource if it has been filled
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.ToBitmapSourceScaledToBelow(System.Int32,System.Int32)">
+            <summary>
+            Returns a BitmapSource that has been scaled to be below the given sizes
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayBitmap.ToBitmapImage">
+            <summary>
+            Returns the image as a Bitmap image
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Kinesense.Interfaces.Threading.ConcurrentList`1">
+            <summary>
+            a wrapped concurrent bag but with 'remove'
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Kinesense.Interfaces.Threading.JobTicketingSystem.VQueueTicket_getTicket">
+            <summary>
+            Get a ticket to be in line for restart
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Threading.JobTicketingSystem.VQueueTicket_checkTicket(System.Int32)">
+            <summary>
+            Tries to redeem ticket for wait queue
+            </summary>
+            <param name="ticket"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kinesense.Interfaces.ByteArrayUtils">
+            <summary>
+            Some internal utilities for handling arrays.
+            </summary>
+            
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayUtils.Compare(System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            Check if the array contains needle at specified position.
+            </summary>
+            
+            <param name="array">Source array to check for needle.</param>
+            <param name="needle">Needle we are searching for.</param>
+            <param name="startIndex">Start index in source array.</param>
+            
+            <returns>Returns <b>true</b> if the source array contains the needle at
+            the specified index. Otherwise it returns <b>false</b>.</returns>
+            
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayUtils.IndexOf(System.Byte[],System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Returns the index of the first occurence of an array of elements within another array.
+            If the search fails, returns -1;
+            </summary>
+            
+            <param name="array">Source array to search for needle.</param>
+            <param name="elements">Needle we are searching for.</param>
+            <param name="startIndex">Start index in source array.</param>
+            <param name="count">Number of bytes to search in the source array.</param>
+            
+            <returns>Returns starting position of the needle if it was found or <b>-1</b> otherwise.</returns>
+            
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayUtils.IndexOf(System.Byte[],System.Nullable{System.Byte}[],System.Int32,System.Int32)">
+            <summary>
+            Returns the index of the first occurence of an array of elements within another array.
+            If the search fails, returns -1;
+            </summary>
+            
+            <param name="array">Source array to search for needle.</param>
+            <param name="elements">Needle we are searching for.</param>
+            <param name="startIndex">Start index in source array.</param>
+            <param name="count">Number of bytes to search in the source array.</param>
+            
+            <returns>Returns starting position of the needle if it was found or <b>-1</b> otherwise.</returns>
+            
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayUtils.IndexOfClipped(System.Byte[],System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Returns the index of the first occurrence of an array of elements within another array,
+            or returns the index of that array of elements clipped by the end of the search.
+            If the search fails, returns -1;
+            </summary>
+            
+            <param name="array">Source array to search for needle.</param>
+            <param name="elements">Needle we are searching for.</param>
+            <param name="startIndex">Start index in source array.</param>
+            <param name="count">Number of bytes to search in the source array.</param>
+            
+            <returns>Returns starting position of the needle if it was found or <b>-1</b> otherwise.</returns>
+            
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayUtils.GetTimeStampsFromFrameIndex(System.Byte[],System.DateTime,System.TimeSpan)">
+            <summary>
+            This method looks for the index at the end of the frame packet. This should be in the format DateTime.Int
+            following a final "--videoboundary"
+            </summary>
+            <param name="buffer"></param>
+            <param name="stampA"></param>
+            <param name="stampB"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ByteArrayUtils.GetTimeStampsFromFrameIndex(System.Byte[])">
+            <summary>
+            This method looks for the index at the end of the frame packet. This should be in the format DateTime.Int
+            following a final "--videoboundary"
+            </summary>
+            <param name="buffer"></param>
+            <param name="stampA"></param>
+            <param name="stampB"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kinesense.Interfaces.CompressedByteArrayBitmap">
+            <summary>
+            compresses and decompresses ByteArrayBitmap Data on demand
+            </summary>
+        </member>
+        <member name="T:Kinesense.Interfaces.Useful.Averaging.RunningAverageOfInts">
+            <summary>
+            Provides a running average of int values
+            This version is designed to be a play-off of speed and accuracy. Once the sample buffer 
+            has been 100% filled, it is 100% accurate, but until that point it will under report as
+            the unassigned members of the buffer are 0
+            </summary>
+        </member>
+        <member name="T:Kinesense.Interfaces.Useful.Averaging.RunningAverageOfDoubles">
+            <summary>
+            Provides a running average of double values
+            This version is designed to be a play-off of speed and accuracy. Once the sample buffer 
+            has been 100% filled, it is 100% accurate, but until that point it will under report as
+            the unassigned members of the buffer are 0
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ColourSpaceConverters.RGBtoHSV(System.Byte[])">
+            <summary>
+            byte[3] rgb to double[3] hsv
+            </summary>
+            <param name="rgb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ColourSpaceConverters.RGBtoHSV_ResultNormalisedToByte(System.Byte[])">
+            <summary>
+            byte[3]rgb to byte[3]hsv_NormalisedTo255
+            </summary>
+            <param name="rgb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ColourSpaceConverters.HSVtoRGB(System.Double[])">
+            <summary>
+            double[3]hsv to byte[3]rgb
+            </summary>
+            <param name="hsv"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ColourSpaceConverters.HSVtoRGB_SourceNormalisedToByte(System.Byte[])">
+            <summary>
+            byte[3]hsv to byte[3]rgb where source is normalised to 255
+            </summary>
+            <param name="hsv"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ColourSpaceConverters.Sequence_HSVtoRGB_SourceNormalisedToByte(System.Byte[])">
+            <summary>
+            converts an array in the format hsvhsvhsv to the format rgbrgbrgbrgb
+            The source has been normalised to byte
+            </summary>
+            <param name="hsv"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ColourSpaceConverters.Sequence_HSVtoRGBT_SourceNormalisedToByte(System.Byte[])">
+            <summary>
+            converts an array in the format hsvhsvhsv to the format rgbtrgbtrgbtrgbt
+            The source has been normalised to byte
+            </summary>
+            <param name="hsv"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.DataConverters.UnixTimeStampTODateTime_safe(System.Int32)">
+            <summary>
+            Converts UnixTimeStamp into DateTime
+            </summary>
+            <param name="uts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.DataConverters.DateTimeTOUnixTimeStamp_safe(System.DateTime)">
+            <summary>
+            Converts DateTime into Unix time Stamp
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.DataConverters.UnixTimeStampTODateTime_safe(System.Double)">
+            <summary>
+            Converts UnixTimeStamp into DateTime
+            </summary>
+            <param name="uts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.DataConverters.ReverseBytes_safe(System.Byte[])">
+            <summary>
+            Reverses the byte order of an array
+            </summary>
+            <param name="inArray"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ImageFilters.VoteCombiner(Kinesense.Interfaces.ByteArrayBitmap,Kinesense.Interfaces.ByteArrayBitmap)">
+            <summary>
+            Returns a BAB containing the values where the two images match.
+            Images must be same size etc...
+            </summary>
+            <param name="A"></param>
+            <param name="B"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ImageFilters.VoteCombinerLocal(Kinesense.Interfaces.ByteArrayBitmap,Kinesense.Interfaces.ByteArrayBitmap,System.Int32,System.Int32)">
+            <summary>
+            Returns an image that is the result of a simple regional analysis on the source images
+            Look at the code to see what it really does
+            </summary>
+            <param name="A"></param>
+            <param name="B"></param>
+            <param name="reqScore"></param>
+            <param name="centreScore"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ImageFilters.SingleImageLocal(Kinesense.Interfaces.ByteArrayBitmap,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            A simple filter to strip out lone pixels, and strengthen grouped pixles.
+            Look at the code.
+            </summary>
+            <param name="A"></param>
+            <param name="reqScore"></param>
+            <param name="centreScore"></param>
+            <param name="requireCentre"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.IPTools.GetLocalIP">
+            <summary>
+            Gets the internal IP address
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.ShortTimeDateString(System.DateTime)">
+            <summary>
+            Culture based shotr date time pattern
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.LongTimeDateString_EmptyIfZero(System.DateTime)">
+            <summary>
+            culture based long date time pattern. If the time is MinValue, return ""
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.LongTimeDateString(System.DateTime)">
+            <summary>
+            culture based long date time pattern
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.StandardLongTimeString(System.DateTime)">
+            <summary>
+            full time string in standard format, no date, HH:mm:ss.ff
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.StandardTimeString(System.DateTime)">
+            <summary>
+            full time string in standard format, no date, HH:mm:ss.ff
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.StandardLongDateString(System.DateTime)">
+            <summary>
+            full date string in standard format, no time, yyyy-MM-dd
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.StandardLongTimeDateString(System.DateTime)">
+            <summary>
+            full time string in standard format "dd/MM/yyyy HH:mm:ss.fff"
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.StandardFullTimeDateString(System.DateTime)">
+            <summary>
+            full time string in standard format "yyyy-MM-dd HH:mm:ss.ff"
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.StandardFullTimeDateStringNoMilliseconds(System.DateTime)">
+            <summary>
+            full time string in standard format "yyyy-MM-dd HH:mm:ss.ff"
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.KinesenseInternationalTimeStringFormat.StandardISO8601ishString(System.DateTime)">
+            <summary>
+            full time string in standard format "dd-MM-yyyy HH.mm.ss"
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.LogOddObject.logArray(System.Int16[],System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Logs a 1d array as a 2d array
+            </summary>
+            <param name="data"></param>
+            <param name="name"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="wdenh"></param>
+        </member>
+        <member name="T:Kinesense.Interfaces.Useful.NamedBackgroundWorker">
+            <summary>
+            forces you to name the thread - helps in debugging
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.NetworkTime.GetDeviationOfSystemClockFromNetworkTime(System.Int32)">
+            <summary>
+            returns the deviation of the system clock from network time
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.NetworkTime.GetDeviationOfSystemClockFromNetworkTime(System.Threading.CancellationToken)">
+            <summary>
+            returns the deviation of the system clock from network time
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.NetworkTime.GetNetworkTime">
+            <summary>
+            Gets the current DateTime from time-a.nist.gov.
+            </summary>
+            <returns>A DateTime containing the current time.</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.NetworkTime.GetNetworkTime(System.String)">
+            <summary>
+            Gets the current DateTime from <paramref name="ntpServer"/>.
+            </summary>
+            <param name="ntpServer">The hostname of the NTP server.</param>
+            <returns>A DateTime containing the current time.</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.NetworkTime.GetNetworkTime(System.Net.IPEndPoint)">
+            <summary>
+            Gets the current DateTime form <paramref name="ep"/> IPEndPoint.
+            </summary>
+            <param name="ep">The IPEndPoint to connect to.</param>
+            <returns>A DateTime containing the current time.</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.OvationUseful.ReadShortTextFile(System.String)">
+            <summary>
+            Reads the gives short text file, returns "" on problem
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.OvationUseful.ReadOvationTxtLog(System.IO.FileInfo)">
+            <summary>
+            Reads the given ovation text log and strips it of useless charachters
+            </summary>
+            <param name="location"></param>
+            <returns>result or "" if problem</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.OvationUseful.ReadOvationTxtLog(System.String)">
+            <summary>
+            Reads the given ovation text log and strips it of useless charachters
+            </summary>
+            <param name="location"></param>
+            <returns>result or "" if problem</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.#ctor(System.String)">
+            <summary>
+            Sets up the writer, if given a file that exists, 
+            </summary>
+            <param name="fileToWrite"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.fSave_doWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Main body of the object doing the work of saving
+            </summary>
+            <param name="o"></param>
+            <param name="d"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.fSave_runWorkComplete(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            Ensures cleanup and correct messages reported
+            </summary>
+            <param name="o"></param>
+            <param name="r"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter._bufferEnqueue(System.String)">
+            <summary>
+            Threadsafe enqueue string
+            </summary>
+            <param name="toEnc"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter._bufferDequeue">
+            <summary>
+            Threadsafe dequeue string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter._bufferDequeueAll">
+            <summary>
+            Threadsafe dump of entire queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter._bufferEnquireSize">
+            <summary>
+            Threadsafe size check
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.AddSimpleReport(System.String)">
+            <summary>
+            Adds a simple report to the system
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.AddTimeStampedReport(System.String)">
+            <summary>
+            Adds the report preceeded by the current time
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.AddTimeIntervalStampedReport(System.String)">
+            <summary>
+            Adds a report with a time stame representing the time difference from the last report
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.AddTimeSinceStartStampedReport(System.String)">
+            <summary>
+            Adds a report with a time stame representing the duration since the begining of the report
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter.TerminateRecording">
+            <summary>
+            Cancels thread, flushes bufferes and cleans up
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.#ctor(System.String)">
+            <summary>
+            Sets up the writer, if given a file that exists, 
+            </summary>
+            <param name="fileToWrite"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.fSave_doWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Main body of the object doing the work of saving
+            </summary>
+            <param name="o"></param>
+            <param name="d"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.fSave_runWorkComplete(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            Ensures cleanup and correct messages reported
+            </summary>
+            <param name="o"></param>
+            <param name="r"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion._bufferEnqueue(System.String)">
+            <summary>
+            Threadsafe enqueue string
+            </summary>
+            <param name="toEnc"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion._bufferDequeue">
+            <summary>
+            Threadsafe dequeue string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion._bufferDequeueAll">
+            <summary>
+            Threadsafe dump of entire queue
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion._bufferEnquireSize">
+            <summary>
+            Threadsafe size check
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.AddSimpleReport(System.String)">
+            <summary>
+            Adds a simple report to the system
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.AddTimeStampedReport(System.String)">
+            <summary>
+            Adds the report preceeded by the current time
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.AddTimeIntervalStampedReport(System.String)">
+            <summary>
+            Adds a report with a time stame representing the time difference from the last report
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.AddTimeSinceStartStampedReport(System.String)">
+            <summary>
+            Adds a report with a time stame representing the duration since the begining of the report
+            </summary>
+            <param name="S"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.TerminateRecording">
+            <summary>
+            Cancels thread, flushes bufferes and cleans up
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Useful.ThreadedTextFileWriter_ThrowawayVersion.WriteAllAndCleanUp">
+            <summary>
+            Call this on abandonment to make the thread clean itself up then exit
+            </summary>
+        </member>
+        <member name="T:Kinesense.Interfaces.DebugMessageLogger">
+            <summary>
+            Writes text logs and timestamps to a .log file for the current date.
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.DebugMessageLogger.EventLogLevel">
+            <summary>
+            A measure of the ammount of logging to accept
+            0 = old (pre-level logging), 1 = normal, 2 = above normal, 3 = almost everything (typical debug setting), 4 = paranoid
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.DebugMessageLogger.ErrorLogLevel">
+            <summary>
+            A measure of the ammount of logging to accept
+            0 = old (pre-level logging), 2 = paranoid
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogError(System.Exception,System.Int32)">
+            <summary>
+            immediately logs exception, including DateTime.Now timestamp, if the level of logging is high enough
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogError(System.Exception)">
+            <summary>
+            DEPRECIATED!!- Please use LogError(string s, int logLevel)
+            immediately logs exception, including DateTime.Now timestamp, if the level of logging is high enough
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogError(System.Exception,System.String)">
+            <summary>
+            DEPRECIATED!!- Please use LogError(string s, string extra, int logLevel)
+            immediately logs string with datetime.now timestamp in .log file, with extra info string
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogError(System.Exception,System.String,System.Int32)">
+            <summary>
+            immediately logs string with datetime.now timestamp in .log file, with extra info string
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogEventLevel(System.String,System.Int32)">
+            <summary>
+            immediately logs eveent, including DateTime.Now timestamp, if the level of logging is high enough
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogAltDebug(System.String)">
+            <summary>
+            DONT USE - DOES NOTHIING
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogEvent(System.String)">
+            <summary>
+            DEPRECIATED!!- Please use LogEvent(string s, int logLevel)
+            immediately logs string with datetime.now timestamp in .log file
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.LogEvent(System.String,System.Object[])">
+            <summary>
+            !!!DEPRECIATED -- Use LogEventLevel(string formatstring, int logLevel, params object[] objects) instead
+            </summary>
+            <param name="formatstring"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.ZipAndSaveGivenFileToLog(System.String)">
+            <summary>
+            returns GUID
+            </summary>
+            <param name="commasep"></param>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.DebugMessageLogger.InsertFileInLog(System.String,System.String)">
+            <summary>
+            Inserts the given file into the log
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Misc.SubRegionDefinition.#ctor">
+            <summary>
+            Initializing like this restrict what you can do until a width height is set, use only for
+            coping via proportional estimation
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Misc.SubRegionDefinition.SetRegionRatio_WithoutPresetWidthHeight(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the ratios of where to sub-select the data from, does not require width and height to be pre-set
+            </summary>
+            <param name="wS"></param>
+            <param name="wE"></param>
+            <param name="hS"></param>
+            <param name="hE"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Misc.SubRegionDefinition.ConvertSubregionValuesIntoSourceValues(System.Int16,System.Int16,System.Int16,System.Int16,System.Int16@,System.Int16@,System.Int16@,System.Int16@)">
+            <summary>
+            Takes the short.Max scaled values from a subregion and re-interprets them
+            as values relative to the source image
+            </summary>
+            <param name="x1"></param>
+            <param name="x2"></param>
+            <param name="y1"></param>
+            <param name="y2"></param>
+            <param name="res_x1"></param>
+            <param name="res_x2"></param>
+            <param name="res_y1"></param>
+            <param name="res_y2"></param>
+        </member>
+        <member name="T:Kinesense.Interfaces.EncodedFrame">
+            <summary>
+            low weight frame data for use in InterProcess Communication
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Interval.Contains(System.DateTime)">
+            <summary>
+            returns true if the given time is within this interval
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.Interval.IsWithin(Kinesense.Interfaces.Interval)">
+            <summary>
+            returns true if the given interval contains this interval
+            </summary>
+            <param name="iv"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kinesense.Interfaces.JpegDataToBitmapSourceConverter">
+            <summary>
+            Converter class to convert a jpeg to bitmap source for display in Filter ID card thumbnail
+            </summary>	
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Kinesense.Interfaces.ListPairs`2" -->
+        <member name="M:Kinesense.Interfaces.MathsExtra.IsPointInsideEllipse(System.Double,System.Double,System.Double[])">
+            <summary>
+            ellipse is in form of rect x1, x2, w, h
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <param name="ellipse"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.fMedian_100(System.Single[])">
+            <summary>
+            calculate median with resolution of .01
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.RGBToHLS(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="RGB"></param>
+            <returns>byte[]{H (0-255), L (0-255), S (0-255)}</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.RemoveNANInfinity(System.Double[])">
+            <summary>
+            replace any NAN or Infinity with 0;
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.RemoveOutliers(System.Double[])">
+            <summary>
+            defined as more than 3 std from the mean. Replace with mean
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.FitLine(System.Double[][])">
+            <summary>
+            returns the least square fit of data[length, 2]
+            </summary>
+            <param name="data"></param>
+            <returns>slope, b, r^2</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.FitLine(System.Int32[][],System.Int32)">
+            <summary>
+            returns the least square fit of data[length, 2]
+            </summary>
+            <param name="data"></param>
+            <param name="useMaxLastEntries"></param>
+            <returns>slope, b, r^2</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.FitLine(System.Int16[][],System.Int32)">
+            <summary>
+            returns the least square fit of data[length, 2]
+            </summary>
+            <param name="data"></param>
+            <param name="useMaxLastEntries"></param>
+            <returns>slope, b, r^2</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.FitLine(System.Double[0:,0:])">
+            <summary>
+            returns the least square fit of data[length, 2]
+            </summary>
+            <param name="data"></param>
+            <returns>slope, b, r^2</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.Mean(System.Double[0:,0:])">
+            <summary>
+            mean of each column of data[ number of points, number of axes ]
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.SSnm(System.Double[0:,0:],System.Double[],System.Int32,System.Int32)">
+            <summary>
+            computes the SS of the column of numbers in pos n of data array
+            </summary>
+            <param name="data"></param>
+            <param name="avg"></param>
+            <param name="n"></param>
+            <param name="m"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.RescaleMany(System.Int32[][],System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            rescales a position object from current max (eg. 100) to destination max (eg. Short.MaxValue)
+            </summary>
+            <param name="position">X1, Y1, X2, Y2</param>
+            <param name="currentMax"></param>
+            <param name="destinationMax"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.Rescale(System.Int32[],System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            rescales a position object from current max (eg. 100) to destination max (eg. Short.MaxValue)
+            </summary>
+            <param name="position">X1, Y1, X2, Y2</param>
+            <param name="currentMax"></param>
+            <param name="destinationMax"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.Rescale(System.Int32[],System.Int32,System.Int32,System.Int16,System.Int16)">
+            <summary>
+            rescales a position object from current max (eg. 100) to destination max (eg. Short.MaxValue)
+            </summary>
+            <param name="position">X1, Y1, X2, Y2</param>
+            <param name="currentMax"></param>
+            <param name="destinationMax"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.CalculateCenterPoint(System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="bounds">X1, Y1, X2, Y2</param>
+            <returns>int[]{(x1 + x2)/2, (y1+y2)/2) </returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.CalculateCenterPoint(System.Int16[])">
+            <summary>
+            
+            </summary>
+            <param name="bounds">X1, Y1, X2, Y2</param>
+            <returns>int[]{(x1 + x2)/2, (y1+y2)/2) </returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.MathsExtra.Rescale(System.Int16[],System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            rescales a position object from current max (eg. 100) to destination max (eg. Short.MaxValue)
+            </summary>
+            <param name="position">X1, Y1, X2, Y2</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Kinesense.Interfaces.MathsExtra.EncodeRatioAsByte(System.Double,System.Double)" -->
+        <member name="T:Kinesense.Interfaces.ObservableObject">
+            <summary>
+            This is the abstract base class for any object that provides property change notifications.  
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.ObservableObject.OnPropertyChanged(System.String)">
+            <summary>
+            Raises this object's PropertyChanged event.
+            </summary>
+            <param name="propertyName">The property that has a new value.</param>
+        </member>
+        <member name="M:Kinesense.Interfaces.ObservableObject.OnPropertiesChanged(System.String[])">
+            <summary>
+            Calls OnPropertyChanged for each property name.
+            </summary>
+            <param name="propertyNames">The properties which have a new value.</param>
+        </member>
+        <member name="M:Kinesense.Interfaces.ObservableObject.VerifyPropertyName(System.String)">
+            <summary>
+            Warns the developer if this object does not have
+            a public property with the specified name. This 
+            method does not exist in a Release build.
+            </summary>
+        </member>
+        <member name="P:Kinesense.Interfaces.ObservableObject.ThrowsOnInvalidPropertyName">
+            <summary>
+            Returns whether an exception is thrown, or if a Debug.Fail() is used
+            when an invalid property name is passed to the VerifyPropertyName method.
+            The default value is false, but subclasses used by unit tests might 
+            override this property's getter to return true.
+            </summary>
+        </member>
+        <member name="E:Kinesense.Interfaces.ObservableObject.PropertyChanged">
+            <summary>
+            Raised when a property on this object has a new value.
+            </summary>
+        </member>
+        <member name="T:Kinesense.Interfaces.Geo.Polygon">
+            <summary>
+            Class which allows comparisons between polygons, overlap and area calculations. 
+            To be used in the filter class
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.Geo.Polygon.#ctor(System.Int32[])">
+            <summary>
+            rect = {x1, y1, x2, y2}
+            </summary>
+            <param name="rect"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Geo.Polygon.#ctor(System.Single[],System.Int32)">
+            <summary>
+            rect = {x1, y1, x2, y2}
+            </summary>
+            <param name="rect"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.Geo.Polygon.FindOverlap(Kinesense.Interfaces.Geo.Polygon)">
+            <summary>
+            returns the overlap area
+            </summary>
+            <param name="rectCorners"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Kinesense.Interfaces.RecoveredFrame">
+            <summary>
+            A new class that will be returned from plugins when they return a frame
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.RecoveredFrame.Frame">
+            <summary>
+            The Video frame data
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.RecoveredFrame.Source">
+            <summary>
+            The video frame source (0,1,2 etc..)
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.RecoveredFrame.Notes">
+            <summary>
+            Notes if there arte any issues
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.RecoveredFrame.NoMoreFrames">
+            <summary>
+            If the video has ended
+            </summary>
+        </member>
+        <member name="T:Kinesense.Interfaces.RelayCommand`1">
+            <summary>
+            A command whose sole purpose is to 
+            relay its functionality to other
+            objects by invoking delegates. The
+            default return value for the CanExecute
+            method is 'true'.
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.RelayCommand`1.#ctor(System.Action{`0},System.Predicate{`0})">
+            <summary>
+            Creates a new command.
+            </summary>
+            <param name="execute">The execution logic.</param>
+            <param name="canExecute">The execution status logic.</param>
+        </member>
+        <member name="T:Kinesense.Interfaces.RelayCommand">
+            <summary>
+            A command whose sole purpose is to 
+            relay its functionality to other
+            objects by invoking delegates. The
+            default return value for the CanExecute
+            method is 'true'.
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.RelayCommand.#ctor(System.Action)">
+            <summary>
+            Creates a new command that can always execute.
+            </summary>
+            <param name="execute">The execution logic.</param>
+        </member>
+        <member name="M:Kinesense.Interfaces.RelayCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Creates a new command.
+            </summary>
+            <param name="execute">The execution logic.</param>
+            <param name="canExecute">The execution status logic.</param>
+        </member>
+        <member name="M:Kinesense.Interfaces.StringTools.GetMD5HashData(System.String)">
+            <summary>
+            take any string and encrypt it using MD5 then
+            return the encrypted data 
+            </summary>
+            <param name="data">input text you will enterd to encrypt it</param>
+            <returns>return the encrypted text as hexadecimal string</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.StringTools.GetSHA1HashData(System.String)">
+            <summary>
+            take any string and encrypt it using SHA1 then
+            return the encrypted data
+            </summary>
+            <param name="data">input text you will enterd to encrypt it</param>
+            <returns>return the encrypted text as hexadecimal string</returns>
+        </member>
+        <member name="F:Kinesense.Interfaces.VideoChangedEventArgs.hasBeenDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.VideoChangedEventArgs.hasHadSpritesChanged">
+            <summary>
+            Read this as has had sprites deleted, but will work for any change
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.SpriteData._videoSourceID">
+            <summary>
+            Origin data for audit trail
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.SpriteData._sourceDatabase">
+            <summary>
+            Path string for project file
+            </summary>
+        </member>
+        <member name="F:Kinesense.Interfaces.SpritePositionData._sourcedatabase">
+            <summary>
+            Path string for project file
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.OpenDatabase(System.String)">
+            <summary>
+            connects to the database from the given project file
+            </summary>
+            <param name="projectFileLocation">Location of project file of DB to open</param>
+            <returns>True if successful, False if fail</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.CloseDatabase">
+            <summary>
+            Closes the DB connection
+            </summary>
+            <returns>True if successful, False if problem</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.GetListVideoSourceIDs">
+            <summary>
+            Returns a list of all videos included within the database
+            </summary>
+            <returns>ICollection of video numbers</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.GetListSpriteIDsInVideoSource(System.Int32)">
+            <summary>
+            Returns a list of all sprites in the videoSourceID provided
+            </summary>
+            <param name="videoSourceID"></param>
+            <returns>Icollection of sprite numbers</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.GetSpriteData(System.Int32,System.Int32)">
+            <summary>
+            Returns data about the given sprite No.
+            </summary>
+            <param name="videoSourceID">Video No. to look for sprite within</param>
+            <param name="spriteID">Sprite No. within database to look at</param>
+            <returns>ISpriteData object of sprite data</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.GetSpritePositionDataList(System.Int32,System.Int32)">
+            <summary>
+            Returns list of spritepositiondata for given sprite id
+            </summary>
+            <param name="videoSourceID"></param>
+            <param name="spriteID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.GetSpritePositionData(System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            Returns data about the given frame in the given sprite.
+            </summary>
+            <param name="videoSourceID">Video No. to look for sprite within</param>
+            <param name="spriteID">Sprite to look within</param>
+            <param name="frameTime">Frame to look for</param>
+            <returns>ISpritePositionData object of frame data</returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.ISimpleSpriteDataRecovery.GetFrameByteArrayBitmap(System.Int32,System.DateTime)">
+            <summary>
+            Returns an image in the interfaces.ByteArrayBitmap format of the frame at the given timestamp in the given video.
+            </summary>
+            <param name="videoSourceID">Video No. to look for sprite within</param>
+            <param name="frameTime">Time stamp of frame</param>
+            <returns></returns>
+        </member>
+        <member name="P:Kinesense.Interfaces.PreciseDateTime.Now">
+            Returns the current date and time, just like DateTime.UtcNow.
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.GetUIorDBTime">
+            <summary>
+            return UITime if not null, otherwise, return DBTime
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Kinesense.Interfaces.VideoFrame.StaySmall">
+            <summary>
+            if true, prevent expansion of Bitmap
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.BitmapSourceScaledToBelow(System.Int32,System.Int32)">
+            <summary>
+            Returns current BitmaapSource scaled below the given dimensions
+            WILL NOT store if it has to build it on the fly
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.DecodeToBitmapOnly">
+            <summary>
+            fills the bitmap data if it is not currently generated.
+            </summary>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.TryDropDecodedDataIfOld(System.DateTime)">
+            <summary>
+            Drops Decoded data if found to be last accessed before given time
+            </summary>
+            <param name="oldIfLastAccessBefore"></param>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.TryDropDecodedData">
+            <summary>
+            Will Drop data if there is suitable encoded data available
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.TryDropBitmapData">
+            <summary>
+            Will Drop data if there is suitable encoded data available
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.TryDropBitmapDeinterlacedData">
+            <summary>
+            Will Drop data if there is suitable encoded data available
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.TryDropBitmapSourceData">
+            <summary>
+            Will Drop data if it exists
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.GetTotalSpaceCurrentlyUsedByBMPData">
+            <summary>
+            retuns the number of bytes used for bitmap data. Returns 0 if no bitmaps decoded
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kinesense.Interfaces.VideoFrame.CloneEncodedOnly">
+            <summary>
+            Makes a copy, except for decoded pixels. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Kinesense.EventArguments.StatusUpdateEventArgs.SimpleStatusUpdateEventHandler">
+            <summary>
+            A simple status update event that reports a decimal
+            </summary>
+            <param name="o"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Kinesense.EventArguments.StatusUpdateEventArgs.AdvancedStatusUpdateEventHandler">
+            <summary>
+            A more complex reporting event that allows a generic action - status - note report with a timestamp.
+            </summary>
+            <param name="o"></param>
+            <param name="e"></param>
+        </member>
+    </members>
+</doc>
